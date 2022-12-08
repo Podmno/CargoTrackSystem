@@ -1,0 +1,19 @@
+server:
+  port: 8088
+
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cargo_db?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 18856312630
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+shiro:
+  sessionManager:
+    sessionIdCookieEnabled: true
+    sessionIdUrlRewritingEnabled: true
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studio.tri.cargo_server.mapper.PackageMapper">
+
+    <insert id="insertPackage" parameterType="studio.tri.cargo_server.entity.PackageEntity">
+        insert into PACKAGE_TABLE(orderid, startplace, endplace, status, sender, receiver, time) values (#{orderid},#{startplace},#{endplace},#{status},#{sender},#{receiver}, now())
+    </insert>
+
+    <select id="findUserPackage" parameterType="String" resultType="studio.tri.cargo_server.entity.PackageEntity">
+        select * from PACKAGE_TABLE where sender = #{uname} or receiver = #{uname}
+    </select>
+
+    <update id="updatePackage" parameterType="studio.tri.cargo_server.entity.PackageEntity">
+        update PACKAGE_TABLE set orderid=#{orderid},startplace=#{startplace},endplace=#{endplace},status=#{status},sender=#{sender},receiver=#{receiver},time=now() where id = #{id}
+    </update>
+
+    <select id="findPackage" parameterType="String" resultType="studio.tri.cargo_server.entity.PackageEntity">
+        select * from PACKAGE_TABLE where id=#{id}
+    </select>
+
+</mapper>
